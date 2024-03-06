@@ -1,0 +1,9 @@
+- name: Установка Git
+  hosts: webserver
+  tasks:
+    - name: install git server
+      ansible.builtin.apt:
+        name: git
+        state: present
+        update_cache: yes # выполняет команду apt-get update для того, чтобы обновить информацию о пакетах в индексе. 
+        become: yes # в плейбуке Ansible указывает на выполнение задачи с привилегиями суперпользователя для доступа к необходимым ресурсам или операциям на целевой машине.
