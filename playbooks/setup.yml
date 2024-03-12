@@ -1,4 +1,4 @@
-- name: Установка Git
+- name: Setup
   hosts: webserver
   tasks:
     - name: install git server
@@ -14,7 +14,7 @@
         name: 
           - nodejs
           - npm
-        state: present
+        state: latest
         update_cache: yes
       become: yes
       tags: node
@@ -28,4 +28,3 @@
         - sansa
         - tirion
       tags: users
-# Добавить обновление пакетов, уставновку git, node или nvm. Бонусом nginx. Это будет уже полезно. Можно добавить команды в Makefile.
