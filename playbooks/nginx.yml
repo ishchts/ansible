@@ -1,5 +1,9 @@
 - name: Nginx Playbook
   hosts: webserver
+  vars:
+    nginx_config_dir: /etc/nginx
+    default_nginx_html_dir: /usr/share/nginx/html
+    nginx_port: 8080
   tasks:
     - name: install nginx
       ansible.builtin.apt:
@@ -10,17 +14,17 @@
       tags: nginx
     
     - name: update nginx config
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: files/nginx.conf
-        dest: /etc/nginx/nginx.conf
+        dest: "{{ nginx_config_dir }}/nginx.conf"
       notify:
         - restart nginx
       become: yes
 
     - name: update nginx html
-      ansible.builtin.copy:
+      ansible.builtin.template:
         src: files/index.html
-        dest: /usr/share/nginx/html/index.html
+        dest: "{{ default_nginx_html_dir }}/index.html"
       notify:
         - restart nginx
       become: yes
