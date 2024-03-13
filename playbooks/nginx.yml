@@ -1,9 +1,10 @@
 - name: Nginx Playbook
   hosts: webserver
+  gather_facts: no
   vars:
     nginx_config_dir: /etc/nginx
     default_nginx_html_dir: /usr/share/nginx/html
-    nginx_port: 8080
+    nginx_port: 80
   tasks:
     - name: install nginx
       ansible.builtin.apt:
