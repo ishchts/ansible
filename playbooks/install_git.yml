@@ -1,0 +1,16 @@
+- hosts: webserver
+  gather_facts: no
+  vars:
+    users:
+      - jaime
+      - sansa
+      - robert
+  tasks:
+    - name: create users
+      ansible.builtin.user:
+        name: "{{ item }}"
+        state: present
+      loop: "{{ users }}"
+
+    - name: add git config
+      

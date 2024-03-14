@@ -12,7 +12,7 @@
     - name: Install Node.js and Npm
       ansible.builtin.apt:
         name: 
-          - nodejs
+          - nodejs = 18
           - npm
         state: latest
         update_cache: yes
