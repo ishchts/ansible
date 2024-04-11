@@ -11,6 +11,3 @@
         name: "{{ item }}"
         state: present
       loop: "{{ users }}"
-
-    - name: add git config
-      
